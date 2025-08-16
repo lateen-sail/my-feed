@@ -33,8 +33,10 @@ export const SignInForm = ({ onToggleMode }: SignInFormProps) => {
     try {
       await signIn(email, password);
       router.push("/dashboard");
-    } catch (error: any) {
-      setError(error.message || "サインインに失敗しました");
+    } catch (error: unknown) {
+      setError(
+        error instanceof Error ? error.message : "サインインに失敗しました"
+      );
     } finally {
       setLoading(false);
     }

@@ -46,8 +46,10 @@ export const SignUpForm = ({ onToggleMode }: SignUpFormProps) => {
     try {
       await signUp(email, password);
       router.push("/dashboard");
-    } catch (error: any) {
-      setError(error.message || "アカウント作成に失敗しました");
+    } catch (error: unknown) {
+      setError(
+        error instanceof Error ? error.message : "アカウント作成に失敗しました"
+      );
     } finally {
       setLoading(false);
     }
