@@ -1,0 +1,18 @@
+@import "./primitive.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: var(--gray-50);
+  --foreground: var(--gray-900);
+}
+
+.dark {
+  --background: var(--gray-900);
+  --foreground: var(--gray-50);
+}
