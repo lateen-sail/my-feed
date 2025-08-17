@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 @import "./themes/base.css";
 @import "./themes/shadcn.css";
+@import "./themes/user-header.css";
+@import "./themes/feed-card.css";
+@import "./themes/favorite-card.css";
 
 @layer base {
   * {

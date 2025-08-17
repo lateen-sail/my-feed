@@ -1,0 +1,47 @@
+@theme inline {
+  --color-feed-card-background: var(--feed-card-background);
+  --color-feed-card-border: var(--feed-card-border);
+  --color-feed-card-shadow: var(--feed-card-shadow);
+  --color-feed-card-title: var(--feed-card-title);
+  --color-feed-card-url: var(--feed-card-url);
+  --color-feed-card-url-hover: var(--feed-card-url-hover);
+  --color-feed-card-favorite-default: var(--feed-card-favorite-default);
+  --color-feed-card-favorite-hover: var(--feed-card-favorite-hover);
+  --color-feed-card-favorite-active: var(--feed-card-favorite-active);
+  --color-feed-card-star-default: var(--feed-card-star-default);
+  --color-feed-card-star-hover: var(--feed-card-star-hover);
+  --color-feed-card-star-active: var(--feed-card-star-active);
+}
+
+:root {
+  --feed-card-background: var(--tw-color-white);
+  --feed-card-border: var(--tw-color-gray-200);
+  --feed-card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --feed-card-title: var(--tw-color-gray-900);
+  --feed-card-url: var(--tw-color-blue-600);
+  --feed-card-url-hover: var(--tw-color-blue-800);
+  --feed-card-favorite-default: var(--tw-color-gray-400);
+  --feed-card-favorite-hover: var(--tw-color-red-500);
+  --feed-card-favorite-active: var(--tw-color-red-500);
+  --feed-card-star-default: var(--tw-color-yellow-400);
+  --feed-card-star-hover: var(--tw-color-yellow-500);
+  --feed-card-star-active: var(--tw-color-yellow-400);
+}
+
+.dark {
+  /* TODO: ダークテーマ対応の際に再調整 */
+  --feed-card-background: var(--tw-color-gray-800);
+  --feed-card-border: var(--tw-color-gray-700);
+  --feed-card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3),
+    0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --feed-card-title: var(--tw-color-white);
+  --feed-card-url: var(--tw-color-blue-400);
+  --feed-card-url-hover: var(--tw-color-blue-300);
+  --feed-card-favorite-default: var(--tw-color-gray-500);
+  --feed-card-favorite-hover: var(--tw-color-red-400);
+  --feed-card-favorite-active: var(--tw-color-red-400);
+  --feed-card-star-default: var(--tw-color-yellow-300);
+  --feed-card-star-hover: var(--tw-color-yellow-200);
+  --feed-card-star-active: var(--tw-color-yellow-300);
+}
