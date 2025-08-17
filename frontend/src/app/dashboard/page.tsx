@@ -31,7 +31,7 @@ export default function Dashboard() {
   // カテゴリが変更されたときにデータを読み込む
   useEffect(() => {
     loadFeedDataForCategory(activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, loadFeedDataForCategory]);
 
   useEffect(() => {
     if (!loading && !user) {

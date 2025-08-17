@@ -1,11 +1,14 @@
+// frontend/src/components/my-ui/tabs/FeedCategoryTabs.tsx
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+type ChildrenFn = (category: string) => React.ReactNode;
 
 type Props = {
   categories: readonly string[];
   activeCategory: string;
   onCategoryChange: (category: string) => void;
-  children: (category: string) => React.ReactNode;
+  children?: ChildrenFn;
 };
 
 const FeedCategoryTabs = ({
@@ -35,9 +38,10 @@ const FeedCategoryTabs = ({
             </TabsTrigger>
           ))}
         </TabsList>
+
         {categories.map((category) => (
           <TabsContent key={category} value={category} className="mt-4">
-            {children(category)}
+            {children ? children(category) : null}
           </TabsContent>
         ))}
       </Tabs>
