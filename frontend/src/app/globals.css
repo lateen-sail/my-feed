@@ -5,6 +5,7 @@
 @import "./themes/user-header.css";
 @import "./themes/feed-card.css";
 @import "./themes/favorite-card.css";
+@import "./themes/feed-category-tabs.css";
 
 @layer base {
   * {

@@ -1,30 +1,93 @@
-import { useState } from "react";
-import {
-  MOCK_FEED_DATA,
-  MOCK_FAVORITE_DATA,
-  FeedItem,
-  FavoriteItem,
-} from "../mock/feedData";
+import { useState, useEffect, useCallback } from "react";
+import { MOCK_FAVORITE_DATA, FeedItem, FavoriteItem } from "../mock/feedData";
+import { type FeedCategory, FEED_CATEGORIES } from "../constants";
+import { fetchFeedData } from "../utils/feedApi";
+import { FeedItem as ApiFeedItem } from "../types";
 
 export const useFeedData = () => {
-  const [feedData, setFeedData] = useState<FeedItem[]>(MOCK_FEED_DATA);
+  // カテゴリごとのフィードデータを管理
+  const [feedDataByCategory, setFeedDataByCategory] = useState<
+    Record<FeedCategory, FeedItem[]>
+  >({} as Record<FeedCategory, FeedItem[]>);
+
+  const [loadingByCategory, setLoadingByCategory] = useState<
+    Record<FeedCategory, boolean>
+  >({} as Record<FeedCategory, boolean>);
+
   const [favoriteData, setFavoriteData] =
     useState<FavoriteItem[]>(MOCK_FAVORITE_DATA);
 
-  const toggleFavorite = (id: string) => {
-    setFeedData((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, favoriteState: !item.favoriteState } : item
-      )
-    );
+  // 初期化時に全カテゴリのローディング状態をfalseに設定
+  useEffect(() => {
+    const initialLoading: Record<string, boolean> = {};
+    FEED_CATEGORIES.forEach((category) => {
+      initialLoading[category] = false;
+    });
+    setLoadingByCategory(initialLoading as Record<FeedCategory, boolean>);
+  }, []);
+
+  // カテゴリごとのフィードデータを取得
+  const loadFeedDataForCategory = useCallback(
+    async (category: FeedCategory) => {
+      if (loadingByCategory[category] || feedDataByCategory[category]) {
+        return; // 既に読み込み中または読み込み済みの場合はスキップ
+      }
+
+      setLoadingByCategory((prev) => ({ ...prev, [category]: true }));
+
+      try {
+        const feedData = await fetchFeedData(category);
+
+        if (feedData && feedData.items) {
+          // APIのFeedItemを内部のFeedItem形式に変換
+          const convertedItems: FeedItem[] = feedData.items.map(
+            (item: ApiFeedItem) => ({
+              id: item.id,
+              title: item.title,
+              url: item.url,
+              favoriteState: false,
+              reviewState: 0,
+            })
+          );
+
+          setFeedDataByCategory((prev) => ({
+            ...prev,
+            [category]: convertedItems,
+          }));
+        }
+      } catch (error) {
+        console.error(`Failed to load feed data for ${category}:`, error);
+      } finally {
+        setLoadingByCategory((prev) => ({ ...prev, [category]: false }));
+      }
+    },
+    [loadingByCategory, feedDataByCategory]
+  );
+
+  const getFeedDataByCategory = (category: FeedCategory): FeedItem[] => {
+    return feedDataByCategory[category] || [];
   };
 
-  const updateReview = (id: string, rating: number) => {
-    setFeedData((prev) =>
-      prev.map((item) =>
+  const isLoadingCategory = (category: FeedCategory): boolean => {
+    return loadingByCategory[category] || false;
+  };
+
+  const toggleFavorite = (id: string, category: FeedCategory) => {
+    setFeedDataByCategory((prev) => ({
+      ...prev,
+      [category]: prev[category].map((item: FeedItem) =>
+        item.id === id ? { ...item, favoriteState: !item.favoriteState } : item
+      ),
+    }));
+  };
+
+  const updateReview = (id: string, rating: number, category: FeedCategory) => {
+    setFeedDataByCategory((prev) => ({
+      ...prev,
+      [category]: prev[category].map((item: FeedItem) =>
         item.id === id ? { ...item, reviewState: rating } : item
-      )
-    );
+      ),
+    }));
   };
 
   const deleteFavorite = (id: string) => {
@@ -39,7 +102,9 @@ export const useFeedData = () => {
   };
 
   return {
-    feedData,
+    loadFeedDataForCategory,
+    getFeedDataByCategory,
+    isLoadingCategory,
     favoriteData,
     toggleFavorite,
     updateReview,

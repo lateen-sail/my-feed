@@ -1,0 +1,31 @@
+@theme inline {
+  --color-feed-category-tabs-background: var(--feed-category-tabs-background);
+  --color-feed-category-tabs-foreground: var(--feed-category-tabs-foreground);
+  --color-feed-category-tabs-border: var(--feed-category-tabs-border);
+  --color-feed-category-tabs-trigger-background: var(
+    --feed-category-tabs-trigger-background
+  );
+  --color-feed-category-tabs-trigger-foreground: var(
+    --feed-category-tabs-trigger-foreground
+  );
+  --color-feed-category-tabs-trigger-active-background: var(
+    --feed-category-tabs-trigger-active-background
+  );
+  --color-feed-category-tabs-trigger-active-foreground: var(
+    --feed-category-tabs-trigger-active-foreground
+  );
+}
+
+:root {
+  --feed-category-tabs-background: var(--tw-color-white);
+  --feed-category-tabs-foreground: var(--tw-color-gray-900);
+  --feed-category-tabs-border: var(--tw-color-gray-200);
+  --feed-category-tabs-trigger-background: var(--tw-color-gray-100);
+  --feed-category-tabs-trigger-foreground: var(--tw-color-gray-600);
+  --feed-category-tabs-trigger-active-background: var(--tw-color-blue-500);
+  --feed-category-tabs-trigger-active-foreground: var(--tw-color-white);
+}
+
+.dark {
+  /* TODO: ダークテーマ対応の際に再調整 */
+}
