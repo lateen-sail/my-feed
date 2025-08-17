@@ -12,14 +12,15 @@ type Props = {
 
 const UserHeader: React.FC<Props> = ({ user, title, onLogout }) => {
   const resetStyle = "border-0 bg-transparent p-0 m-0";
-  const themeStyle = "w-full bg-white border-b border-gray-200 px-4 py-3";
+  const themeStyle =
+    "w-full bg-user-header-background text-user-header-foreground px-3 md:px-5 py-3";
 
   return (
     <header className={`${resetStyle} ${themeStyle}`}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-bold">{title}</h1>
         <div className="flex items-center space-x-4">
-          <span className="text-sm text-gray-600">{user.email}</span>
+          <span className="text-xs hidden md:block">{user.email}</span>
           <Button onClick={onLogout} variant="outline">
             ログアウト
           </Button>
