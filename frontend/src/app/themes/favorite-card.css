@@ -1,63 +1,27 @@
 @theme inline {
   --color-favorite-card-background: var(--favorite-card-background);
-  --color-favorite-card-border: var(--favorite-card-border);
-  --color-favorite-card-shadow: var(--favorite-card-shadow);
-  --color-favorite-card-title: var(--favorite-card-title);
-  --color-favorite-card-url: var(--favorite-card-url);
-  --color-favorite-card-url-hover: var(--favorite-card-url-hover);
-  --color-favorite-card-menu-default: var(--favorite-card-menu-default);
-  --color-favorite-card-menu-hover: var(--favorite-card-menu-hover);
-  --color-favorite-card-star-active: var(--favorite-card-star-active);
-  --color-favorite-card-dropdown-background: var(
-    --favorite-card-dropdown-background
+  --color-favorite-card-background-curated: var(
+    --favorite-card-background-curated
   );
-  --color-favorite-card-dropdown-border: var(--favorite-card-dropdown-border);
-  --color-favorite-card-dropdown-shadow: var(--favorite-card-dropdown-shadow);
-  --color-favorite-card-badge-background: var(--favorite-card-badge-background);
-  --color-favorite-card-badge-text: var(--favorite-card-badge-text);
-  --color-favorite-card-delete-text: var(--favorite-card-delete-text);
-  --color-favorite-card-delete-hover: var(--favorite-card-delete-hover);
+  --color-favorite-card-foreground: var(--favorite-card-foreground);
+  --color-favorite-card-foreground-curated: var(
+    --favorite-card-foreground-curated
+  );
+  --color-favorite-card-menu-background: var(--favorite-card-menu-background);
+  --color-favorite-card-menu-foreground: var(--favorite-card-menu-foreground);
+  --color-favorite-card-star: var(--favorite-card-star);
 }
 
 :root {
-  --favorite-card-background: var(--tw-color-white);
-  --favorite-card-border: var(--tw-color-gray-200);
-  --favorite-card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --favorite-card-title: var(--tw-color-gray-900);
-  --favorite-card-url: var(--tw-color-blue-600);
-  --favorite-card-url-hover: var(--tw-color-blue-800);
-  --favorite-card-menu-default: var(--tw-color-gray-400);
-  --favorite-card-menu-hover: var(--tw-color-gray-600);
-  --favorite-card-star-active: var(--tw-color-yellow-400);
-  --favorite-card-dropdown-background: var(--tw-color-white);
-  --favorite-card-dropdown-border: var(--tw-color-gray-200);
-  --favorite-card-dropdown-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --favorite-card-badge-background: var(--tw-color-blue-100);
-  --favorite-card-badge-text: var(--tw-color-blue-800);
-  --favorite-card-delete-text: var(--tw-color-red-600);
-  --favorite-card-delete-hover: var(--tw-color-red-50);
+  --favorite-card-background: transparent;
+  --favorite-card-background-curated: var(--color-gray-200);
+  --favorite-card-foreground: var(--color-gray-800);
+  --favorite-card-foreground-curated: var(--color-gray-500);
+  --favorite-card-menu-background: var(--color-gray-50);
+  --favorite-card-menu-foreground: var(--color-gray-700);
+  --favorite-card-star: var(--color-yellow-400);
 }
 
 .dark {
   /* TODO: ダークテーマ対応の際に再調整 */
-  --favorite-card-background: var(--tw-color-gray-800);
-  --favorite-card-border: var(--tw-color-gray-700);
-  --favorite-card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3),
-    0 1px 2px -1px rgb(0 0 0 / 0.3);
-  --favorite-card-title: var(--tw-color-white);
-  --favorite-card-url: var(--tw-color-blue-400);
-  --favorite-card-url-hover: var(--tw-color-blue-300);
-  --favorite-card-menu-default: var(--tw-color-gray-500);
-  --favorite-card-menu-hover: var(--tw-color-gray-300);
-  --favorite-card-star-active: var(--tw-color-yellow-300);
-  --favorite-card-dropdown-background: var(--tw-color-gray-800);
-  --favorite-card-dropdown-border: var(--tw-color-gray-700);
-  --favorite-card-dropdown-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3),
-    0 4px 6px -4px rgb(0 0 0 / 0.3);
-  --favorite-card-badge-background: var(--tw-color-blue-900);
-  --favorite-card-badge-text: var(--tw-color-blue-200);
-  --favorite-card-delete-text: var(--tw-color-red-400);
-  --favorite-card-delete-hover: var(--tw-color-red-900);
 }
