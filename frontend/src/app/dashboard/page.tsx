@@ -105,16 +105,8 @@ export default function Dashboard() {
                           title={item.title}
                           url={item.url}
                           favoriteState={item.favoriteState}
-                          reviewState={item.reviewState}
                           onFavoriteToggle={() =>
                             toggleFavorite(item.id, category as FeedCategory)
-                          }
-                          onReviewChange={(rating) =>
-                            updateReview(
-                              item.id,
-                              rating,
-                              category as FeedCategory
-                            )
                           }
                         />
                       )
