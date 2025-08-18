@@ -1,6 +1,6 @@
-// frontend/src/components/my-ui/tabs/FeedCategoryTabs.tsx
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 type ChildrenFn = (category: string) => React.ReactNode;
 
@@ -17,22 +17,18 @@ const FeedCategoryTabs = ({
   onCategoryChange,
   children,
 }: Props) => {
-  const resetStyle = "w-full";
-  const themeStyle = "space-y-4";
-
   return (
-    <div className={`${resetStyle} ${themeStyle}`}>
-      <Tabs
-        value={activeCategory}
-        onValueChange={onCategoryChange}
-        className="w-full"
-      >
-        <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8">
+    <div>
+      <Tabs value={activeCategory} onValueChange={onCategoryChange}>
+        <TabsList className="flex bg-feed-category-tabs-background w-full overflow-x-auto overscroll-x-contain scrollbar-hide">
           {categories.map((category) => (
             <TabsTrigger
               key={category}
               value={category}
-              className="text-xs lg:text-sm"
+              className={cn(
+                "data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+                "shrink-0 text-sm text-feed-category-tabs-trigger-foreground data-[state=active]:text-feed-category-tabs-trigger-foreground-active data-[state=active]:font-bold"
+              )}
             >
               {category}
             </TabsTrigger>
